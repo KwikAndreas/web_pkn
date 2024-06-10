@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
     <title>UAS PKN</title>
   </head>
   <style>
@@ -13,6 +12,7 @@
       margin: 0;
       padding: 0;
       transition: background 0.3s, color 0.3s;
+      scroll-behavior: smooth;
     }
     .navbar {
       position: fixed;
@@ -20,19 +20,31 @@
       width: 100%;
       background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(30px);
-      padding: 15px;
-      text-align: center;
+      padding: 10px 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-links {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
     }
     .navbar a {
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       color: #333;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+    .navbar a:hover {
+      color: #a1c4fd;
     }
     .toggle-button {
       cursor: pointer;
+      margin-right: 40px;
       padding: 10px 20px;
       background-color: #333;
       color: #fff;
@@ -46,6 +58,32 @@
       width: 20px;
       height: 20px;
     }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px;
+      transition: all 0.3s;
+    }
+    .navbar-links-mobile {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      top: 50px;
+      left: 0;
+      z-index: 999;
+    }
+    .navbar-links-mobile a {
+      margin: 10px 0;
+    }
     section {
       padding: 60px 20px;
       margin-top: 60px;
@@ -56,18 +94,17 @@
       margin-bottom: 20px;
     }
     p {
+      user-select: none;
+      font-size: 20px;
+      font-weight: 500;
       margin: 10px 0;
       text-indent: -20px;
       padding-left: 20px;
       position: relative;
     }
-    p::before {
-      content: "⚫";
-      position: absolute;
-      left: 0;
-    }
     p.sub-point {
-      text-indent: -20px;
+      font-size: 16px;
+      text-indent: 8px;
       padding-left: 40px;
     }
     p.sub-point::before {
@@ -75,10 +112,16 @@
       position: absolute;
       left: 20px;
     }
+    .batas {
+      height: 8px;
+    }
     .content-wrapper {
-      max-width: 800px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 0 20px;
+    }
+    .penting {
+      font-weight: 800;
     }
     /* Light Mode Background Gradient */
     body {
@@ -96,6 +139,9 @@
     .dark-mode .navbar a {
       color: #ffffff;
     }
+    .dark-mode .navbar a:hover {
+      color: #a1c4fd;
+    }
     .dark-mode .toggle-button {
       background-color: #ffffff;
       color: #333;
@@ -103,37 +149,234 @@
     .dark-mode .toggle-button img {
       filter: invert(1);
     }
+    .dark-mode .hamburger div {
+      background-color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .navbar-links-mobile.active {
+        display: flex;
+      }
+      section {
+        padding: 40px 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .toggle-button {
+        font-size: 14px;
+        padding: 8px 15px;
+      }
+      .toggle-button img {
+        width: 18px;
+        height: 18px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
   </style>
   <body>
     <div class="navbar">
-      <a href="#pajak">Pajak</a>
-      <a href="#demokrasi">Demokrasi Pancasila</a>
-      <a href="#integrasi">Integrasi Nasional</a>
-      <a href="#masalah">Masalah Kebangsaan</a>
+      <div class="hamburger" onclick="toggleHamburger()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="navbar-links">
+        <a href="#pajak">Pajak</a>
+        <a href="#demokrasi">Demokrasi Pancasila</a>
+        <a href="#integrasi">Integrasi Nasional</a>
+        <a href="#masalah">Masalah Kebangsaan</a>
+      </div>
+      <div class="navbar-links-mobile">
+        <a href="#pajak">Pajak</a>
+        <a href="#demokrasi">Demokrasi Pancasila</a>
+        <a href="#integrasi">Integrasi Nasional</a>
+        <a href="#masalah">Masalah Kebangsaan</a>
+      </div>
       <button class="toggle-button" onclick="toggleMode()">Dark</button>
     </div>
 
     <div class="content-wrapper">
       <section id="pajak">
-        <h2>6.Pajak</h2>
+        <h2>Pajak</h2>
         <p>
-          Pajak adalah kontribusi wajib kepada negara yang terutang oleh orang
-          pribadi atau badan yang bersifat memaksa berdasarkan undang-undang.
+          1. Soepomo : Penduduk adalah orang yang dengan sah bertempat tinggal
+          tetap dalam suatu negara
+          <span class="penting">(tidak bertentangan dengan ketentuan)</span>.
+        </p>
+        <div class="batas"></div>
+        <p>2. Warga negara : 1) Warga negara, 2) Orang asing</p>
+        <div class="batas"></div>
+        <p>3. Unsur Pembentukan Negara</p>
+        <p class="sub-point">Wilayah</p>
+        <p class="sub-point">Pemerintahan negara</p>
+        <p class="sub-point">Pengakuan dari negara lain</p>
+        <p class="sub-point">Warga Negara</p>
+        <div class="batas"></div>
+        <p>
+          4. Menurut Aristoteles, manusia adalah zoon politikon (makhluk sosial)
+        </p>
+        <div class="batas"></div>
+        <p>
+          5. Menurut Nicolaus Driyarkara (1913-1967), manusia adalah homo homini
+          socius, sahabat bagi sesamanya
+        </p>
+        <div class="batas"></div>
+        <p>
+          6. Menurut Adam Smith (1723-1790), manusia adalah makhluk ekonomi
+          (homo emconomicus), memilih/menilai sesuatu berdasarkan pertimbangan
+          pribadi
+        </p>
+        <div class="batas"></div>
+        <p>
+          7. Pajak adalah sarana berbagi Masyarakat yang mampu lewat tangan
+          pemerintah
+        </p>
+        <div class="batas"></div>
+        <p>8. UU No. 16 tahun 2009, sebelumnya UU No. 6 tahun 1984</p>
+        <div class="batas"></div>
+        <p>
+          9. Negara harus mewujudkan keadilan bagi masyarakat, namun baru akan
+          terwujud apabila warganya taat membayar pajak
+        </p>
+        <div class="batas"></div>
+        <p>
+          10. Dua dimensi yang terkandung dalam menerapkan distribusi pajak:
         </p>
         <p class="sub-point">
-          → Pajak digunakan untuk membiayai pengeluaran pemerintah.
+          Sifat memaksa agar warga negara yang mampu dapat menunaikan kewajiban
+          membayar pajak
         </p>
+        <p class="sub-point">Sifat kerelaan dari warga negara</p>
+        <div class="batas"></div>
+        <p>11. Pihak yang terlibat:</p>
+        <p class="sub-point">Negara</p>
+        <p class="sub-point">Badan/lembaga/institusi</p>
+        <p class="sub-point">Warga negara/perorangan</p>
+        <div class="batas"></div>
+        <p>12. Hak:</p>
+        <p class="sub-point">Pengurangan pajak bumi dan bangunan</p>
+        <p class="sub-point">Pembebasan pajak (dengan alasan tertentu)</p>
+        <p class="sub-point">Mendapat insentif perpajakan</p>
+        <p class="sub-point">Kerahasiaan wajib pajak</p>
+        <p class="sub-point">Penundaan pelaporan SPT tahunan</p>
+        <div class="batas"></div>
+        <p>13. Kewajiban</p>
+        <p class="sub-point">Mendapatkan NPWP</p>
+        <p class="sub-point">
+          Menghitung pajak dan menentukan yang harus dibayarkan
+        </p>
+        <p class="sub-point">Membayar pajak</p>
+        <p class="sub-point">
+          Melapor dengan menggunakan Surat Pemberitahuan (SPT)
+        </p>
+        <div class="batas"></div>
+        <p>14. Fungsi alokasi</p>
+        <p class="sub-point">
+          Menyediakan dana memenuhi kebutuhan Masyarakat
+          <span class="penting">(membangun infrastruktur)</span> .
+        </p>
+        <div class="batas"></div>
+        <p>15. Fungsi distribusi</p>
+        <p class="sub-point">Menyeimbangkan pembagian pendapatan masyarakat</p>
+        <div class="batas"></div>
+        <p>16. Fungsi stabilitasi</p>
+        <p class="sub-point">Menstabilkan ekonomi</p>
+        <div class="batas"></div>
       </section>
 
       <section id="demokrasi">
         <h2>Demokrasi Pancasila</h2>
         <p>
-          Demokrasi Pancasila adalah sistem demokrasi yang berlandaskan pada
-          nilai-nilai Pancasila.
+          1. Demokrasi berasal dari bahayas Yunani, demos (rakyat) dan cratein
+          (pemerintahan), pemerintahan oleh rakyat
+        </p>
+        <div class="batas"></div>
+        <p>
+          2. Abraham Lincoln : Demokrasi adalah pemerintah dari rakyat, oleh
+          rakyat, untuk rakyat
+        </p>
+        <div class="batas"></div>
+        <p>
+          3. Budiarjo : demokrasi yang dianut Indonesia adalah demokrasi
+          berdasarkan Pancasila
+        </p>
+        <div class="batas"></div>
+        <p>
+          4. Nilai pokok demokrasi secara konstitusional tersirat dalam UUD NRI
+          1945
+        </p>
+        <div class="batas"></div>
+        <p>
+          5. Menurut Moh. Hatta, sebelum Indonesia merdeka, sudah ada sistem
+          demokrasi yaitu demokrasi desa
+        </p>
+        <div class="batas"></div>
+        <p>6. Demokrasi desa adalah demokrasi asli Indonesia</p>
+        <p class="sub-point">Cita-cita rapat</p>
+        <p class="sub-point">Cita-cita protes</p>
+        <p class="sub-point">Cita-cita menolong</p>
+        <div class="batas"></div>
+        <p>7. 4 fase demokrasi Indonesia (Budiarjo):</p>
+        <p class="sub-point">
+          Masa Republik Indonesia I (1945-1959), masa demokrasi konstitusional
+          menonjolkan peranan parlemen dan partai
+        </p>
+        <p class="sub-point">CMRI II (1959-1965), masa demokrasi terpimpin</p>
+        <p class="sub-point">
+          MRI III (1965-1998), masa demokrasi Pancasila menonjolkan sistem
+          presidensil
+        </p>
+        <p class="sub-point">MRI IV (1998-sekarang), masa reformasi</p>
+        <div class="batas"></div>
+        <p>8. Fungsi DPR</p>
+        <p class="sub-point">Legislasi => Membentuk UU</p>
+        <p class="sub-point">
+          Anggaran => Menyusun dan menetapkan anggaran pendapatan dan belanja
         </p>
         <p class="sub-point">
-          → Prinsip utama Demokrasi Pancasila adalah musyawarah untuk mufakat.
+          Pengawasan => Pengawasan terhadap pelaksanaan UUD NRI 1945, UU, dan
+          peraturan pelaksanaannya
         </p>
+        <div class="batas"></div>
+        <p>9. Hak DPR</p>
+        <p class="sub-point">
+          Interpelasi => Meminta keterangan kepada pemerintah mengenai kebijakan
+        </p>
+        <p class="sub-point">
+          Angket => Melakukan penyelidikan terhadap kebijakan pemerintah
+        </p>
+        <p class="sub-point">Menyatakan pendapat</p>
+        <p class="sub-point">Hak-hak lain</p>
+        <div class="batas"></div>
+        <p>10. Demokrasi dengan Rule of Law</p>
+        <p class="sub-point">
+          Legal truth (mengandung, melindungi, mengembangkan kebenaran hukum)
+        </p>
+        <p class="sub-point">Legal justice (memberikan keadilan hukum)</p>
+        <p class="sub-point">Legal security (menjamin kepastian hukum)</p>
+        <p class="sub-point">
+          Legal interest (mengembangkan manfaat atau kepentingan hukum)
+        </p>
+        <div class="batas"></div>
+        <p>11. Demokrasi Pancasila menuntut adanya demokrasi:</p>
+        <p class="sub-point">Berdasarkan pada Ketuhanan Yang Maha Esa</p>
+        <p class="sub-point">Diterima dengan kecerdasan</p>
+        <p class="sub-point">Berkedaulatan rakyat</p>
+        <p class="sub-point">Rule of Law</p>
+        <p class="sub-point">Pembagian kekuasaan</p>
+        <p class="sub-point">Menghormati HAM</p>
+        <p class="sub-point">Sistem pengadilan yang merdeka</p>
+        <p class="sub-point">Menerima otonomi daerah</p>
+        <p class="sub-point">Diarahkan kepada kemakmuran rakyat</p>
+        <p class="sub-point">Berkeadilan sosial</p>
+        <div class="batas"></div>
       </section>
 
       <section id="integrasi">
@@ -143,7 +386,7 @@
           budaya dalam kesatuan wilayah nasional.
         </p>
         <p class="sub-point">
-          → Tujuan integrasi nasional adalah untuk memperkuat persatuan dan
+          Tujuan integrasi nasional adalah untuk memperkuat persatuan dan
           kesatuan bangsa.
         </p>
       </section>
@@ -155,22 +398,49 @@
           bangsa.
         </p>
         <p class="sub-point">
-          → Contohnya adalah masalah ekonomi, sosial, dan politik yang
-          memerlukan penanganan serius.
+          Contohnya adalah masalah ekonomi, sosial, dan politik yang memerlukan
+          penanganan serius.
         </p>
       </section>
     </div>
 
     <script>
       function toggleMode() {
-        document.body.classList.toggle("dark-mode");
+        var body = document.body;
         var toggleButton = document.querySelector(".toggle-button");
-        if (document.body.classList.contains("dark-mode")) {
+        var toggleIcon = document.getElementById("toggle-icon");
+        body.classList.toggle("dark-mode");
+        if (body.classList.contains("dark-mode")) {
           toggleButton.textContent = "Light";
+          toggleIcon.src =
+            "https://img.icons8.com/ios-filled/50/000000/moon-symbol.png";
         } else {
           toggleButton.textContent = "Night";
+          toggleIcon.src =
+            "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
         }
+        toggleButton.appendChild(toggleIcon);
       }
+
+      function toggleHamburger() {
+        var navbarLinksMobile = document.querySelector(".navbar-links-mobile");
+        navbarLinksMobile.classList.toggle("active");
+      }
+
+      document
+        .querySelectorAll(".navbar a, .navbar-links-mobile a")
+        .forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            document.getElementById(targetId).scrollIntoView({
+              behavior: "smooth",
+            });
+            if (window.innerWidth <= 768) {
+              toggleHamburger();
+            }
+          });
+        });
     </script>
   </body>
 </html>
