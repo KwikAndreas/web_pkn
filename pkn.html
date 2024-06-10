@@ -600,8 +600,8 @@
         <p>14. Nilai transaksi 66,3 triliun per tahun</p>
       </section>
     </div>
-
-    <script>a
+    <footer></footer>
+    <script>
       function toggleMode() {
         var body = document.body;
         var toggleButton = document.querySelector(".toggle-button");
@@ -621,6 +621,7 @@
             "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
           hamburgerBars.forEach((bar) => (bar.style.backgroundColor = "#333"));
         }
+        localStorage.setItem("mode", isDarkMode ? "dark" : "light");
         toggleButton.appendChild(toggleIcon);
       }
 
