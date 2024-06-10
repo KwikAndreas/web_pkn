@@ -608,21 +608,31 @@
         var toggleIcon = document.getElementById("toggle-icon");
         var hamburgerBars = document.querySelectorAll(".hamburger div");
         body.classList.toggle("dark-mode");
+      
         if (body.classList.contains("dark-mode")) {
           toggleButton.textContent = "Light";
-          toggleIcon.src =
-            "https://img.icons8.com/ios-filled/50/000000/moon-symbol.png";
-          hamburgerBars.forEach(
-            (bar) => (bar.style.backgroundColor = "#ffffff")
-          );
+          toggleIcon.src = "https://img.icons8.com/ios-filled/50/000000/moon-symbol.png";
+          hamburgerBars.forEach(bar => bar.style.backgroundColor = "#ffffff");
+          localStorage.setItem("mode", "dark"); // Store dark mode in localStorage
         } else {
           toggleButton.textContent = "Dark";
-          toggleIcon.src =
-            "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
-          hamburgerBars.forEach((bar) => (bar.style.backgroundColor = "#333"));
+          toggleIcon.src = "https://img.icons8.com/ios-filled/50/000000/sun--v1.png";
+          hamburgerBars.forEach(bar => bar.style.backgroundColor = "#333");
+          localStorage.setItem("mode", "light"); // Store light mode in localStorage
         }
-        localStorage.setItem("mode", isDarkMode ? "dark" : "light");
+      
         toggleButton.appendChild(toggleIcon);
+      }      
+      
+      const storedMode = localStorage.getItem('mode');
+      if (storedMode === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.toggle-button').textContent = 'Light';
+        // Update the toggle icon if needed
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.querySelector('.toggle-button').textContent = 'Dark';
+        // Update the toggle icon if needed
       }
 
       function toggleHamburger() {
