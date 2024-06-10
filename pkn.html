@@ -3,70 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kisi kisi UTS PTI</title>
     <link rel="stylesheet" href="styles.css" />
+    <title>UAS PKN</title>
   </head>
-  <nav class="navbar">
-    <div class="navbar-container">
-      <h1 class="navbar-title">Kisi kisi UAS PKN</h1>
-    </div>
-  </nav>
   <body>
-    <div class="content">
-      <div class="card-container">
-        <div class="card">
-          <div class="card-title">
-            6. Pajak
-          </div>
-          <div class="card-description">
-            Soepomo : Penduduk adalah orang yang dengan sah bertempat 
-            tinggal tetap dalam suatu negara (tidak bertentangan dengan 
-            ketentuan)
-          </div>
-          <div class="card-description">
-            B.<span class="underlined">Kecerdasan Buatan (AI): </span>cabang
-            ilmu komputer yang berfokus pada pembuatan mesin cerdas yang mampu
-            melakukan tugas yang memerlukan kecerdasan manusia.
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">7. Masalah Kebangsaan</div>
-          <div class="card-description">
-            Sistem adaptif berfokus pada kemampuan suatu sistem untuk belajar
-            dari pengalaman, menyesuaikan diri terhadap perubahan lingkungan,
-            dan meningkatkan kinerjanya seiring waktu tanpa perlu pemrograman
-            eksternal secara langsung
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">8. Integrasi Nasional</div>
-          <div class="card-description">
-            <span class="underlined"
-              >Bagaimana sistem adaptif membantu manajemen/meningkatkan
-              efisiensi di berbagai bidang:
-            </span>
-            <div class="card-description">
-              Sistem adaptif dapat membantu dalam pengelolaan inventaris,
-              peramalan permintaan, pengoptimalan rute, pengelolaan energi,
-              kontrol proses industri, dan banyak lagi, dengan cara memungkinkan
-              sistem untuk secara otomatis menyesuaikan diri terhadap perubahan
-              lingkungan.
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">9. Masalah Kebangsaan</div>
-          <div class="card-description">
-            Sistem adaptif berfokus pada kemampuan suatu sistem untuk belajar dari
-            pengalaman, menyesuaikan diri terhadap perubahan lingkungan, dan
-            meningkatkan kinerjanya seiring waktu tanpa perlu pemrograman
-            eksternal secara langsung
-          </div>
-        </div>
+    <div class="navbar">
+      <a href="#pajak">Pajak</a>
+      <a href="#demokrasi">Demokrasi Pancasila</a>
+      <a href="#integrasi">Integrasi Nasional</a>
+      <a href="#masalah">Masalah Kebangsaan</a>
+      <button class="toggle-button" onclick="toggleMode()">Dark</button>
     </div>
-    <script src="script.js"></script>
+
+    <div class="content-wrapper">
+      <section id="pajak">
+        <h2>6.Pajak</h2>
+        <p>
+          Pajak adalah kontribusi wajib kepada negara yang terutang oleh
+          orang pribadi atau badan yang bersifat memaksa berdasarkan
+          undang-undang.
+        </p>
+        <p class="sub-point">
+          → Pajak digunakan untuk membiayai pengeluaran pemerintah.
+        </p>
+      </section>
+
+      <section id="demokrasi">
+        <h2>Demokrasi Pancasila</h2>
+        <p>
+          Demokrasi Pancasila adalah sistem demokrasi yang berlandaskan pada
+          nilai-nilai Pancasila.
+        </p>
+        <p class="sub-point">
+          → Prinsip utama Demokrasi Pancasila adalah musyawarah untuk mufakat.
+        </p>
+      </section>
+
+      <section id="integrasi">
+        <h2>Integrasi Nasional</h2>
+        <p>
+          Integrasi Nasional adalah proses penyatuan berbagai kelompok sosial
+          budaya dalam kesatuan wilayah nasional.
+        </p>
+        <p class="sub-point">
+          → Tujuan integrasi nasional adalah untuk memperkuat persatuan dan
+          kesatuan bangsa.
+        </p>
+      </section>
+
+      <section id="masalah">
+        <h2>Masalah Kebangsaan</h2>
+        <p>
+          Masalah kebangsaan mencakup berbagai isu yang dihadapi oleh negara
+          dan bangsa.
+        </p>
+        <p class="sub-point">
+          → Contohnya adalah masalah ekonomi, sosial, dan politik yang
+          memerlukan penanganan serius.
+        </p>
+      </section>
+    </div>
+
+    <script>
+      function toggleMode() {
+        document.body.classList.toggle("dark-mode");
+        var toggleButton = document.querySelector(".toggle-button");
+        if (document.body.classList.contains("dark-mode")) {
+          toggleButton.textContent = "Light";
+        } else {
+          toggleButton.textContent = "Night";
+        }
+      }
+    </script>
   </body>
 </html>
